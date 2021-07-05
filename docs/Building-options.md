@@ -7,13 +7,13 @@ The table below showcases supported commands (along its function) provided by Pr
 | ``make``, ``make all``, ``make package`` | Compiles the entire Procursus suit and packs it into Debian packages |
 | ``make env`` | Prints the ``proenv`` shell function to ``stdout`` to give a cross-compilation environment in your POSIX shell (e.g ``make env >> ~/.zshrc``) |
 | ``make everything`` | Similar to ``make`` and ``make all``, except that every supported host platform gets compiled and packed into Debian packages |
-| ``make (tool)`` | Compiles a specific tool, sending headers and libraries to ``BUILD_BASE`` so that they can be accessed by other packages |
+| ``make (tool)`` | Compiles a specific tool, sending headers and libraries to ``build_base`` so that they can be accessed by other packages |
 ``make (tool)-package`` | Similar to ``make (tool)``. After compiling, the tool gets packed into a Debian package |
 ``make rebuild-(tool)`` | Re-builds an entire package |
 ``make rebuild-(tool)-package`` | Similar to ``make rebuild-(tool)``. After re-compiling, the tool gets packed into a Debian package |
 | ``make (tool)-deps`` | Finds and returns a list of dylibs linked to ``(tool)`` |
-| ``make clean`` | Cleans out ``BUILD_STAGE``, ``BUILD_STAGE``, and ``BUILD_WORK`` |
-| ``make extreme-clean`` | Similar to ``make clean``, cleaning out ``BUILD_SOURCE`` and ``BUILD_DIST`` |
+| ``make clean`` | Cleans out and removes ``build_base``, ``build_stage``, and ``build_work`` |
+| ``make extreme-clean`` | Similar to ``make clean``, cleaning out and removing ``build_source``, ``build_strap``, and ``build_dist`` |
 
 These commands can have specific build flags attached to them; the table below showcases build flags you can pass as options when using Procursus build commands
 | Variable | Required | Function | Example |
