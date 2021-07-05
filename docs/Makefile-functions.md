@@ -1,14 +1,14 @@
 This specific page documents functions used in all Procursus packages, each having its purpose. These functions can be found within the ``Makefile``.
 
-The table below showcases current functions used across all Procursus projects.
+The table below showcases current functions used across all Procursus projects, and where to use them when creating a new package.
 
-| Function | Description |
-|----------|-------------|
-| ``SIGN`` | Recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign``. |
-| ``PACK`` | Creates a Debian package with ``dpkg`` or ``dm.pl`` for the given project. |
-| ``EXTRACT_TAR`` | Extracts a tarball from ``BUILD_SOURCE`` to ``BUILD_WORK``. Use this to extract a downloaded tarball. |
-| ``GITHUB_ARCHIVE`` | Downloads a Github archive from given paramters. This function makes it easier to download project files from Github. |
-| ``GIT_CLONE`` | Much like ``GITHUB_ARCHIVE``, but clones the specified repo using ``git``. |
+| Function | Description | Use in |
+|----------|-------------|---------|
+| ``SIGN`` | Recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign``. | Package stage (``(tool)-package``) |
+| ``PACK`` | Creates a Debian package with ``dpkg`` or ``dm.pl`` for the given project. | Package stage (``(tool)-package``) |
+| ``EXTRACT_TAR`` | Extracts a tarball from ``BUILD_SOURCE`` to ``BUILD_WORK``. Use this to extract a downloaded tarball. | Setup stage (``(tool)-setup``) |
+| ``GITHUB_ARCHIVE`` | Downloads a Github archive from given paramters. This function makes it easier to download project files from Github. | Setup stage (``(tool)-setup``) |
+| ``GIT_CLONE`` | Much like ``GITHUB_ARCHIVE``, but clones the specified repo using ``git``. | Setup stage (``(tool)-setup``) |
 
 ## ``GITHUB_ARCHIVE``
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
