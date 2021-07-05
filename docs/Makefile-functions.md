@@ -10,6 +10,25 @@ The table below showcases current functions used across all Procursus projects, 
 | ``GITHUB_ARCHIVE`` | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (``(tool)-setup``) |
 | ``GIT_CLONE`` | Much like ``GITHUB_ARCHIVE``, but clones the specified repo using ``git``. | Setup stage (``(tool)-setup``) |
 
+## ``PACK``
+This functions creates a Debian package with ``dpkg`` or ``dm.pl`` for a given project. The table below showcases all parameters required for the function to work
+
+| Index | Description |
+|-------|-------------|
+| 1 | Folder name where a control file might reside in for the project |
+| 2 | Version variable that is in the control file that will be replaced |
+
+The function looks for package files in ``build_dist``, and puts them accordingly, while also changing the package's control file, where specific variables are replaced, such as the maintainer of the package, and the version number
+
+#### Example
+
+    YOUTUBE_DL_VERSION := 2021.06.06
+    DEB_YOUTUBE_DL_V ?= $(YOUTUBE_DL_VERSION)
+
+    $(call PACK,youtube-dl,DEB_YOUTUBE_DL_V)
+
+The example above packs files relating to ``youtube-dl`` (which would be in ``build_dist/youtube-dl``), and replaces ``DEB_YOUTUBE_DL_V`` in the control file with the version number assigned to that variable.
+
 ## ``GITHUB_ARCHIVE``
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
 
