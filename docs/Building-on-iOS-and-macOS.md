@@ -4,7 +4,7 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
 1. Install dependencies
 
-    On macOS, you'll need the latest stable XCode build. On iOS, install the following packages with your prefered package manager (e.g Sileo), or with APT
+    On macOS, you'll need the latest stable Xcode build. On iOS, install the following packages with your prefered package manager (e.g Sileo) or with APT
 
         sudo apt install clang dsymutil odcctools
 
@@ -14,7 +14,7 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
 2. Download your SDKs
 
-    If you're on macOS, you can skip to step 3.
+    *If you're on macOS, you can skip this step.*
 
     To build Procursus packages, you'll need need a macOS SDK (your installed toolchain already contains an iOS SDK). Check the repositories below and get what you need
 
@@ -23,7 +23,7 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
     You'd likely want to checkout the default values of your specific platform, since each support platform use a different path for SDKs
 
-    Ideally, you can also export SDK variables from the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page on your shell configuration
+    Ideally, you can also export SDK variables from the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page on your shell configuration file
 
 3. Clone the Procursus build system
 
@@ -31,10 +31,10 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
 4. Build!
 
-    Building packages on iOS can be a hit or miss. However, macOS is the main platform where all packages should build
+    Building packages on iOS can be a hit or miss. However, macOS is the main platform where all packages should (and will) build
 
-    To test your own build system setup, attempt to build ``bash``. Checkout the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
+    To test your own build system setup, attempt to build ``bash``.
 
         make bash-package [OPTIONS]
 
-    Now you're rolling. Cheers!
+    Checkout the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
