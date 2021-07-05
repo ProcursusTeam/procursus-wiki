@@ -4,10 +4,10 @@ The table below showcases current functions used across all Procursus projects, 
 
 | Function | Description | Use in |
 |----------|-------------|---------|
-| ``SIGN`` | Recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign``. | Package stage (``(tool)-package``) |
-| ``PACK`` | Creates a Debian package with ``dpkg`` or ``dm.pl`` for the given project. | Package stage (``(tool)-package``) |
-| ``EXTRACT_TAR`` | Extracts a tarball from ``BUILD_SOURCE`` to ``BUILD_WORK``. Use this to extract a downloaded tarball. | Setup stage (``(tool)-setup``) |
-| ``GITHUB_ARCHIVE`` | Downloads a Github archive from given paramters. This function makes it easier to download project files from Github. | Setup stage (``(tool)-setup``) |
+| ``SIGN`` | Recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign`` | Package stage (``(tool)-package``) |
+| ``PACK`` | Creates a Debian package with ``dpkg`` or ``dm.pl`` for the given project | Package stage (``(tool)-package``) |
+| ``EXTRACT_TAR`` | Extracts a tarball from ``build_source`` to ``build_work`` | Setup stage (``(tool)-setup``) |
+| ``GITHUB_ARCHIVE`` | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (``(tool)-setup``) |
 | ``GIT_CLONE`` | Much like ``GITHUB_ARCHIVE``, but clones the specified repo using ``git``. | Setup stage (``(tool)-setup``) |
 
 ## ``GITHUB_ARCHIVE``
@@ -58,35 +58,37 @@ There many ways in which you can manipulate this specific function in your Makef
     # tarball: $(BUILD_SOURCE)/ghostbin-v0e0a3b72c3379e51bf03fe676af3a74a01239a47.tar.gz
 
 ## ``GIT_CLONE``
-Much like ``GITHUB_ARCHIVE``, this function allows you to download a project more easily. However, this extends support for projects that are outside of Github. Below is more documentation about specific paramters.
+Like ``GITHUB_ARCHIVE``, except this function extends support for projects that are outside of Github or don't provide any release tarballs. Below is more documentation about specific parameters
 
 | Index | Status | Description |
 |-------|--------|-------------|
 | 1 | Required | Link of the project that should be cloned |
 | 2 | Required | Branch that will be checkout upon cloning |
-| 3 | Required | Folder name that the project will be cloned to. This folder will always default to being inside ``BUILD_WORK`` |
+| 3 | Required | Name of the folder where the project should be cloned to |
+
+The folder where the files are cloned will always in ``build_work``, since the function doesn't take direct paths as arguments.
 
 #### Example
 
     AOM_VERSION := 3.1.0
 
-    # Files are saved in BUILD_WORK/aom
     $(call GIT_CLONE,https://aomedia.googlesource.com/aom.git,v$(AOM_VERSION),aom) 
 
 ## ``EXTRACT_TAR``
-This function is used in order to extract a tarball downloaded through ``wget`` or through the ``GITHUB_ARCHIVE`` function. The table below documents the 3 arguments that this function requires.
+This function is used to extract a tarball downloaded through ``wget`` or ``GITHUB_ARCHIVE``. The table below documents the 3 arguments that this function requires
 
 | Index | Status | Description |
 |-------|--------|-------------|
 | 1 | Required | Name of the downloaded tarball |
-| 2 | Required | Folder name extracted by the tarball |
-| 3 | Required | Path where tarball files should be copied to |
+| 2 | Required | Name of the folder extracted from downloaded tarball |
+| 3 | Required | Folder name where tarball files should be copied to |
 
-The function does not take direct paths; the first argument looks for tarballs in ``build_source``, extracts the contents in that same directory, and then copies them over to ``build_work``. The example below showcases a tarball of Github project being downloaded, then extracted
+The function does not take direct paths; the first argument looks for tarballs in ``build_source``, extracts the contents in that same directory, and then copies them over to ``build_work``.
+
+#### Example
 
     APPUNINST_VERSION := 1.0.0
 
-    # Under your package setup function
     $(call GITHUB_ARCHIVE,quiprr,appuninst,$(APPUNINST_VERSION),v$(APPUNINST_VERSION))
     $(call EXTRACT_TAR,appuninst-$(APPUNINST_VERSION).tar.gz,appuninst-$(APPUNINST_VERSION),appuninst)
 
