@@ -7,7 +7,7 @@ on:
       - 'docs/*.md'
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
