@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Upload documentation to Wiki
-        uses: SwiftDocOrg/github-wiki-publish-action@v1
+        uses: theos/github-wiki-publish-action@v1
         with:
           path: "docs"
         env:
-          GITHUB_REPOSITORY: ${{ secrets.GH_WIKI_REPO }}
+          GH_WIKI_REPOSITORY: ProcursusTeam/Procursus
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
