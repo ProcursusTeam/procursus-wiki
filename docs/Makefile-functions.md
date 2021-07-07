@@ -10,6 +10,22 @@ The table below showcases current functions used across all Procursus projects, 
 | ``GITHUB_ARCHIVE`` | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (``(tool)-setup``) |
 | ``GIT_CLONE`` | Much like ``GITHUB_ARCHIVE``, but clones the specified repo using ``git``. | Setup stage (``(tool)-setup``) |
 
+## ``SIGN``
+This function recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign``. The table below showcase the required parameters of the function
+
+| Index | Description |
+|-------|-------------|
+| 1 | Name of the project with binaries; always in ``build_dist`` |
+| 2 | File name that includes specific entitlements for binaries |
+
+The second argument can be any string, as long as the entitlements are within ``build_misc/entitlements``.
+
+#### Example
+
+    $(call SIGN,nano,general.xml)
+
+The example above looks for binaries within ``build_dist/nano`` and signs them with entitlements specified in ``build_misc/entitlements/general.xml``, which is often used to apply general entitlements to binaries and Mach-O libraries.
+
 ## ``PACK``
 This functions creates a Debian package with ``dpkg`` or ``dm.pl`` for a given project. The table below showcases all parameters required for the function to work
 
