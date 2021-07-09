@@ -5,4 +5,3 @@ Use the [issues](https://github.com/ProcursusTeam/Procursus/issues) or [discussi
 
 ## Contributions
 Like Procursus, this repository welcomes contributions with open arms, and are handled here, not in the main Procursus repository. Checkout the [contributing guidelines](./CONTRIBUTING.md) before submitting a PR.
-

@@ -33,8 +33,6 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
     Building packages on iOS can be a hit or miss. However, macOS is the main platform where all packages should (and will) build
 
-    To test your own build system setup, attempt to build ``bash``.
+    To test your own build system setup, attempt to build ``bash``. Checkout the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
 
         make bash-package [OPTIONS]
-
-    Checkout the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
