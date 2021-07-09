@@ -94,4 +94,4 @@ The script will setup everything needed for Procursus (e.g SDK, dependencies, to
 
     Similar to other supported platforms, it's likely that some packages (particularly those that need Go, Python, and/or NodeJS) will fail to compile. You'll need a macOS build system if this is the case
 
-    If you find yourself needing a macOS build system, you can [setup macOS in a KVM](https://github.com/foxlet/macOS-Simple-KVM)
+    If you find yourself needing a macOS build system, you can [setup macOS in a KVM](https://github.com/foxlet/macOS-Simple-KVM) and [follow the macOS instructions](https://github.com/ProcursusTeam/Procursus/wiki/Building-on-iOS-and-macOS).
