@@ -4,11 +4,11 @@ The table below showcases current functions used across all Procursus projects, 
 
 | Function | Description | Used in |
 |----------|-------------|---------|
-| `SIGN` | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
-| `PACK` | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
-| `EXTRACT_TAR` | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
-| `GITHUB_ARCHIVE` | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
-| `GIT_CLONE` | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
+| [`SIGN`](#sign) | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
+| [`PACK`](#pack) | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
+| [`EXTRACT_TAR`](#extract_tar) | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
+| [`GITHUB_ARCHIVE`](#github_archive) | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
+| [`GIT_CLONE`](#git_clone) | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
 
 ## `SIGN`
 This function recursively signs Mach-O libraries and binaries with `ldid` or `codesign`. The table below showcase the required parameters of the function
