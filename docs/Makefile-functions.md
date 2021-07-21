@@ -6,6 +6,7 @@ The table below showcases current functions used across all Procursus projects, 
 |----------|-------------|---------|
 | [`SIGN`](#sign) | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
 | [`PACK`](#pack) | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
+| [`DO_PATCH`](#do_patch) | Applies patches/changes nessesary by a project to function | Setup stage (`(tool)-setup`) |
 | [`EXTRACT_TAR`](#extract_tar) | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
 | [`GITHUB_ARCHIVE`](#github_archive) | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
 | [`GIT_CLONE`](#git_clone) | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
@@ -44,6 +45,24 @@ The function looks for package files in `build_dist`, and puts them accordingly,
     $(call PACK,youtube-dl,DEB_YOUTUBE_DL_V)
 
 The example above packs files relating to `youtube-dl` (which would be in `build_dist/youtube-dl`), and replaces `DEB_YOUTUBE_DL_V` in the control file with the version number assigned to that variable.
+
+## `DO_PATCH`
+This function applies patches/changes necessary for a project to function on a specific platform. The table below showcases all parameters required for the function to work
+
+| Index | Description |
+|-------|-------------|
+| 1 | Folder name where patches are located; generally inside `build_patch` |
+| 2 | Folder name where patches should be applied to. This generally matches the name of the first argument, and the folder must exist in `build_work` |
+
+*The last arguement of the function is undocumented as it's generally the same across all projects.*
+
+#### Example
+
+    $(call DO_PATCH,youtube-dl,youtube-dl,-p1)
+
+The example above looks for patches inside `build_patch/youtube-dl` and applies each patch (or diff) found to the project, `youtube-dl` (which can be found in `build_work/youtube-dl`).
+
+Patches are generally a good idea when dealing with a big project that requires specific changes (that can't be put on the project's repository or isn't part of the project's upstream yet) for a specific platform.
 
 ## `GITHUB_ARCHIVE`
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
