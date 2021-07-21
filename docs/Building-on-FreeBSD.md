@@ -17,7 +17,7 @@ Building on FreeBSD, much like Linux support, is made possible with [cctools-por
     [This script](https://gist.github.com/asdfugil/71cdfca5aa1bc0d59de06518cd1c530c) will setup your SDKs, cctools-port with your iOS toolchain, and other dependencies needed.
 
     To run the script
-    
+
         bash procursus-utils-fbsd.sh
 
     It's recommended that you add this script to your shells' config file, so that it's sourced on every enviorment on login.

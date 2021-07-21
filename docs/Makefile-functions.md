@@ -107,7 +107,7 @@ The folder where the files are cloned will always in ``build_work``, since the f
 
     AOM_VERSION := 3.1.0
 
-    $(call GIT_CLONE,https://aomedia.googlesource.com/aom.git,v$(AOM_VERSION),aom) 
+    $(call GIT_CLONE,https://aomedia.googlesource.com/aom.git,v$(AOM_VERSION),aom)
 
 ## ``EXTRACT_TAR``
 This function is used to extract a tarball downloaded through ``wget`` or ``GITHUB_ARCHIVE``. The table below documents the 3 arguments that this function requires

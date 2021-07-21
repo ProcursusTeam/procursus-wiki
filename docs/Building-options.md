@@ -18,7 +18,7 @@ The table below showcases supported commands (along its function) provided by Pr
 These commands can have specific build flags attached to them; the table below showcases build flags you can pass as options when using Procursus build commands
 | Variable | Required | Function | Example |
 |----------|----------|----------|---------|
-| ``MEMO_TARGET`` | Yes | Specific architecture type that packages are built in | ``iphoneos-arm64`` | 
+| ``MEMO_TARGET`` | Yes | Specific architecture type that packages are built in | ``iphoneos-arm64`` |
 | ``MEMO_CFVER`` | Yes | CoreFoundation value of the minimum *OS version to compile for | ``1700``, which represents the CoreFoundation version that corresponds to iOS 14 |
 | ``NO_PGP`` | No | Specifies whether GPG signature checks on tarballs should be skipped. Set this option to 1 to enable it | ``NO_PGP=1`` |
 | ``MEMO_QUIET`` | No | Allows unnecessary warnings to be silenced. Set this option to 1 to enable it | ``MEMO_QUIET=1`` |

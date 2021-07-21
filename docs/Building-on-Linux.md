@@ -27,7 +27,7 @@ The script will setup everything needed for Procursus (e.g SDK, dependencies, to
 
     - [okanon/iPhoneOS.sdk](https://github.com/okanon/iPhoneOS.sdk), which has some iOS SDKs
     - [xybp888/iOS-SDKs](https://github.com/xybp888/iOS-SDKs), which might have up-to-date iOS SDKs
-    
+
     It's prefered that you get an SDK for iOS 13 or above. Once you have your iOS SDK, add the C++ libraries
 
         TEMPSDKFOLDER=$(mktemp -d)
@@ -60,11 +60,11 @@ The script will setup everything needed for Procursus (e.g SDK, dependencies, to
 4. Add your created toolchain to PATH
 
     This step makes it easier for Procursus to use tools from the created toolchain. It's recommended that you move your created toolchain to your home folder
-    
+
     The toolchain created is within the "target" folder
 
         mv target ~/cctools
-        
+
     You can then add the new path (~/cctools) to your shell's configuration profile (e.g .profile, .bashrc, .zshrc). Make sure to reload your config file or relogin to a new shell
 
         if [ -d "$HOME/cctools" ]; then
