@@ -38,8 +38,8 @@ The function looks for package files in `build_dist`, and puts them accordingly,
 
 #### Example
 
-    YOUTUBE_DL_VERSION := 2021.06.06
-    DEB_YOUTUBE_DL_V ?= $(YOUTUBE_DL_VERSION)
+    YOUTUBE_DL_VERSION  := 2021.06.06
+    DEB_YOUTUBE_DL_V    ?= $(YOUTUBE_DL_VERSION)
 
     $(call PACK,youtube-dl,DEB_YOUTUBE_DL_V)
 
