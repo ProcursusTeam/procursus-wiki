@@ -6,7 +6,7 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
     On macOS, you'll need the latest stable Xcode build. On iOS, install the following packages with your prefered package manager (e.g Sileo) or with APT
 
-        sudo apt install clang dsymutil odcctools
+        sudo apt install clang dsymutil odcctools text-cmds
 
     Next, install the following packages with your prefered package manager or APT
 
