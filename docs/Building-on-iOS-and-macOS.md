@@ -23,7 +23,7 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
     You'd likely want to checkout the default values of your specific platform, since each support platform use a different path for SDKs
 
-    Ideally, you can also export SDK variables from the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page on your shell configuration file
+    Ideally, you can also export SDK variables from the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page on your shell configuration file
 
 3. Clone the Procursus build system
 
@@ -33,6 +33,6 @@ This guide assumes that your device is already setup with a suit of Procursus.
 
     Building packages on iOS can be a hit or miss. However, macOS is the main platform where all packages should (and will) build
 
-    To test your own build system setup, attempt to build ``bash``. Checkout the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
+    To test your own build system setup, attempt to build `bash`. Checkout the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
 
         make bash-package [OPTIONS]

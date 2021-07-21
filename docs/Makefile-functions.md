@@ -1,40 +1,40 @@
-This specific page documents functions used in all Procursus packages, each having its purpose. These functions can be found within the ``Makefile``.
+This specific page documents functions used in all Procursus packages, each having its purpose. These functions can be found within the `Makefile`.
 
 The table below showcases current functions used across all Procursus projects, and where to use them when creating a new package.
 
-| Function | Description | Use in |
+| Function | Description | Used in |
 |----------|-------------|---------|
-| ``SIGN`` | Recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign`` | Package stage (``(tool)-package``) |
-| ``PACK`` | Creates a Debian package with ``dpkg`` or ``dm.pl`` for the given project | Package stage (``(tool)-package``) |
-| ``EXTRACT_TAR`` | Extracts a tarball from ``build_source`` to ``build_work`` | Setup stage (``(tool)-setup``) |
-| ``GITHUB_ARCHIVE`` | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (``(tool)-setup``) |
-| ``GIT_CLONE`` | Much like ``GITHUB_ARCHIVE``, but clones the specified repo using ``git``. | Setup stage (``(tool)-setup``) |
+| `SIGN` | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
+| `PACK` | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
+| `EXTRACT_TAR` | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
+| `GITHUB_ARCHIVE` | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
+| `GIT_CLONE` | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
 
-## ``SIGN``
-This function recursively signs Mach-O libraries and binaries with ``ldid`` or ``codesign``. The table below showcase the required parameters of the function
+## `SIGN`
+This function recursively signs Mach-O libraries and binaries with `ldid` or `codesign`. The table below showcase the required parameters of the function
 
 | Index | Description |
 |-------|-------------|
-| 1 | Name of the project with binaries; always in ``build_dist`` |
+| 1 | Name of the project with binaries; always in `build_dist` |
 | 2 | File name that includes specific entitlements for binaries |
 
-The second argument can be any string, as long as the entitlements are within ``build_misc/entitlements``.
+The second argument can be any string, as long as the entitlements are within `build_misc/entitlements`.
 
 #### Example
 
     $(call SIGN,nano,general.xml)
 
-The example above looks for binaries within ``build_dist/nano`` and signs them with entitlements specified in ``build_misc/entitlements/general.xml``, which is often used to apply general entitlements to binaries and Mach-O libraries.
+The example above looks for binaries within `build_dist/nano` and signs them with entitlements specified in `build_misc/entitlements/general.xml`, which is often used to apply general entitlements to binaries and Mach-O libraries.
 
-## ``PACK``
-This functions creates a Debian package with ``dpkg`` or ``dm.pl`` for a given project. The table below showcases all parameters required for the function to work
+## `PACK`
+This functions creates a Debian package with `dpkg` or `dm.pl` for a given project. The table below showcases all parameters required for the function to work
 
 | Index | Description |
 |-------|-------------|
 | 1 | Folder name where a control file might reside in for the project |
 | 2 | Version variable that is in the control file that will be replaced |
 
-The function looks for package files in ``build_dist``, and puts them accordingly, while also changing the package's control file, where specific variables are replaced, such as the maintainer of the package, and the version number
+The function looks for package files in `build_dist`, and puts them accordingly, while also changing the package's control file, where specific variables are replaced, such as the maintainer of the package, and the version number
 
 #### Example
 
@@ -43,9 +43,9 @@ The function looks for package files in ``build_dist``, and puts them accordingl
 
     $(call PACK,youtube-dl,DEB_YOUTUBE_DL_V)
 
-The example above packs files relating to ``youtube-dl`` (which would be in ``build_dist/youtube-dl``), and replaces ``DEB_YOUTUBE_DL_V`` in the control file with the version number assigned to that variable.
+The example above packs files relating to `youtube-dl` (which would be in `build_dist/youtube-dl`), and replaces `DEB_YOUTUBE_DL_V` in the control file with the version number assigned to that variable.
 
-## ``GITHUB_ARCHIVE``
+## `GITHUB_ARCHIVE`
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
 
 | Index | Status | Description |
@@ -92,8 +92,8 @@ There many ways in which you can manipulate this specific function in your Makef
     # URL:     https://github.com/DHowett/spectre/archive/0e0a3b72c3379e51bf03fe676af3a74a01239a47.tar.gz
     # tarball: $(BUILD_SOURCE)/ghostbin-v0e0a3b72c3379e51bf03fe676af3a74a01239a47.tar.gz
 
-## ``GIT_CLONE``
-Like ``GITHUB_ARCHIVE``, except this function extends support for projects that are outside of Github or don't provide any release tarballs. Below is more documentation about specific parameters
+## `GIT_CLONE`
+Like `GITHUB_ARCHIVE`, except this function extends support for projects that are outside of Github or don't provide any release tarballs. Below is more documentation about specific parameters
 
 | Index | Status | Description |
 |-------|--------|-------------|
@@ -101,7 +101,7 @@ Like ``GITHUB_ARCHIVE``, except this function extends support for projects that 
 | 2 | Required | Branch that will be checkout upon cloning |
 | 3 | Required | Name of the folder where the project should be cloned to |
 
-The folder where the files are cloned will always in ``build_work``, since the function doesn't take direct paths as arguments.
+The folder where the files are cloned will always in `build_work`, since the function doesn't take direct paths as arguments.
 
 #### Example
 
@@ -109,8 +109,8 @@ The folder where the files are cloned will always in ``build_work``, since the f
 
     $(call GIT_CLONE,https://aomedia.googlesource.com/aom.git,v$(AOM_VERSION),aom)
 
-## ``EXTRACT_TAR``
-This function is used to extract a tarball downloaded through ``wget`` or ``GITHUB_ARCHIVE``. The table below documents the 3 arguments that this function requires
+## `EXTRACT_TAR`
+This function is used to extract a tarball downloaded through `wget` or `GITHUB_ARCHIVE`. The table below documents the 3 arguments that this function requires
 
 | Index | Status | Description |
 |-------|--------|-------------|
@@ -118,7 +118,7 @@ This function is used to extract a tarball downloaded through ``wget`` or ``GITH
 | 2 | Required | Name of the folder extracted from downloaded tarball |
 | 3 | Required | Folder name where tarball files should be copied to |
 
-The function does not take direct paths; the first argument looks for tarballs in ``build_source``, extracts the contents in that same directory, and then copies them over to ``build_work``.
+The function does not take direct paths; the first argument looks for tarballs in `build_source`, extracts the contents in that same directory, and then copies them over to `build_work`.
 
 #### Example
 
@@ -127,4 +127,4 @@ The function does not take direct paths; the first argument looks for tarballs i
     $(call GITHUB_ARCHIVE,quiprr,appuninst,$(APPUNINST_VERSION),v$(APPUNINST_VERSION))
     $(call EXTRACT_TAR,appuninst-$(APPUNINST_VERSION).tar.gz,appuninst-$(APPUNINST_VERSION),appuninst)
 
-The example above extracts the tarball downloaded from Github into ``build_source/appuninst-$(APPUNINST_VERSION)`` — then, those files are copied to ``build_work/appuninst``.
+The example above extracts the tarball downloaded from Github into `build_source/appuninst-$(APPUNINST_VERSION)` — then, those files are copied to `build_work/appuninst`.

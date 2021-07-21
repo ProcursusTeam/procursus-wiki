@@ -48,12 +48,12 @@ The script will setup everything needed for Procursus (e.g SDK, dependencies, to
 
         git clone --recursive https://github.com/tpoechtrager/cctools-port
 
-    After, edit ``TRIPLE`` in ``build.sh`` (line 90) to ``aarch64-apple-darwin``, or whatever toolchain you want to build. It's recommended that you "remove the 11 from Darwin"
+    After, edit `TRIPLE` in `build.sh` (line 90) to `aarch64-apple-darwin`, or whatever toolchain you want to build. It's recommended that you "remove the 11 from Darwin"
 
         cd cctools-port/usage_examples/ios_toolchain
         sed -i 's/arm-apple-darwin11/aarch64-apple-darwin/g' build.sh
 
-    After, you can run ``build.sh`` by specifying your iOS SDK path
+    After, you can run `build.sh` by specifying your iOS SDK path
 
         ./build.sh [SDK] arm64
 
@@ -73,7 +73,7 @@ The script will setup everything needed for Procursus (e.g SDK, dependencies, to
 
 5. Get your macOS SDK
 
-    Unlike your iOS SDK, you can just download a macOS SDK from [phracker/MacOSX-SDKs](https://github.com/phracker/MacOSX-SDKs), extract it, and move it to ``~/cctools/SDK/``
+    Unlike your iOS SDK, you can just download a macOS SDK from [phracker/MacOSX-SDKs](https://github.com/phracker/MacOSX-SDKs), extract it, and move it to `~/cctools/SDK`
 
     It's recommended that you use the latest available SDK in the repository above
 
@@ -82,11 +82,11 @@ The script will setup everything needed for Procursus (e.g SDK, dependencies, to
         mv ~/cctools/SDK/MacOSX11.3.sdk ~/cctools/SDK/MacOSX.sdk
         rm MacOSX11.3.sdk.tar.xz
 
-    You can also specify and export SDK variables to use a differnet path. Check out the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page for more documentation
+    You can also specify and export SDK variables to use a differnet path. Check out the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page for more documentation
 
 6. Build!
 
-    To check whether you did everything correctly, attempt to build ``bash`` with a few options from the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page
+    To check whether you did everything correctly, attempt to build `bash` with a few options from the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page
 
         make bash [OPTIONS]
 

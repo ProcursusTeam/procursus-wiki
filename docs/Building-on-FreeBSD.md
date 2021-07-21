@@ -2,14 +2,14 @@ Building on FreeBSD, much like Linux support, is made possible with [cctools-por
 
 1. Install dependencies
 
-    You can install dependencies with ``pkg``
+    You can install dependencies with `pkg`
 
         sudo pkg autoconf automake bash cmake coreutils docbook-xsl dpkg fakeroot findutils gettext git gmake gnugrep gnupg gsed gtar libtool ncurses openssl patch perl5 pkgconf po4a python39 wget zstd
 
-    You'll also need to install ``triehash``
+    You'll also need to install `triehash`
 
         wget -O triehash https://raw.githubusercontent.com/julian-klode/triehash/main/triehash.pl
-        gsed -i 's@#!/usr/bin/perl -w@#!/usr/bin/env perl -w@g' triehash
+        gsed -i 's|#!/usr/bin/perl -w|#!/usr/bin/env perl -w|g' triehash
         sudo mv triehash /usr/local/bin
 
 2. Setup your iOS toolchain
@@ -34,7 +34,7 @@ Building on FreeBSD, much like Linux support, is made possible with [cctools-por
 
 4. Build!
 
-    To check whether you did everything correctly, attempt to build ``bash``. Checkout the ["Build options"](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
+    To check whether you did everything correctly, attempt to build `bash`. Checkout the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be passed
 
         make bash [OPTIONS]
 
