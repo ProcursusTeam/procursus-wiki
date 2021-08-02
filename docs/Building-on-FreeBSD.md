@@ -22,15 +22,15 @@ Building on FreeBSD, much like Linux support, is made possible with [cctools-por
 
     It's recommended that you add this script to your shells' config file, so that it's sourced on every enviorment on login.
 
-        echo "source procursus-utils-fbsd.sh" > .profile
+        echo "source procursus-utils-fbsd.sh" > ~/.profile
 
-    Then, reload your shell or reload your shells' config file.
+    Then, reload your shell or reload your shell's config file.
 
-        source procursus-utils-fbsd.sh
+        source ~/.profile
 
 3. Clone the Procursus project
 
-        git clone --recursive https://github.com/ProcursusTeam/Procursus.git
+        git clone --recursive https://github.com/ProcursusTeam/Procursus.git; cd Procursus
 
 4. Build!
 
