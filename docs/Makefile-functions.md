@@ -7,6 +7,7 @@ The table below showcases current functions used across all Procursus projects, 
 | [`SIGN`](#sign) | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
 | [`PACK`](#pack) | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
 | [`DO_PATCH`](#do_patch) | Applies patches/changes nessesary by a project to function | Setup stage (`(tool)-setup`) |
+| [`AFTER_BUILD`](#after_build) | Creates build system related files which indicate the status of a package (`.build_complete`) | Package function (`(tool)`), which inherits the package stage | 
 | [`EXTRACT_TAR`](#extract_tar) | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
 | [`GITHUB_ARCHIVE`](#github_archive) | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
 | [`GIT_CLONE`](#git_clone) | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
@@ -63,6 +64,20 @@ This function applies patches/changes necessary for a project to function on a s
 The example above looks for patches inside `build_patch/youtube-dl` and applies each patch (or diff) found to the project, `youtube-dl` (which can be found in `build_work/youtube-dl`).
 
 Patches are generally a good idea when dealing with a big project that requires specific changes (that can't be put on the project's repository or isn't part of the project's upstream yet) for a specific platform.
+
+## `AFTER_BUILD`
+
+This function creates build system related files which indicate the build status of a package. The file it generates, `.build_complete`, indicates that a specific package has already been built.
+
+The function takes 0 arguments, since the name of the package built is inherited when used.
+
+#### Example
+
+    lf: lf-setup
+        ... # Do stuff here
+        $(call AFTER_BUILD)
+
+In the example above, the package, `lf`, is being marked as built with the function. The name of the package is inherited when called.
 
 ## `GITHUB_ARCHIVE`
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
