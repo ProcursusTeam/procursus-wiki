@@ -69,15 +69,19 @@ Patches are generally a good idea when dealing with a big project that requires 
 
 This function creates build system related files which indicate the build status of a package. The file it generates, `.build_complete`, indicates that a specific package has already been built.
 
-The function takes 0 arguments, since the name of the package built is inherited when used.
+The function is also capable of copying files to `build_base`, by passing "copy" as an argument. This is useful when other packages require files one package.
 
-#### Example
+### Basic example
 
     lf: lf-setup
         ... # Do stuff here
         $(call AFTER_BUILD)
 
-In the example above, the package, `lf`, is being marked as built with the function. The name of the package is inherited when called.
+#### Copying files to `build_base`
+
+    apt: apt-setup ... # Other dependencies
+        ...
+        $(call AFTER_BUILD,copy)
 
 ## `GITHUB_ARCHIVE`
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
