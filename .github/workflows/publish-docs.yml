@@ -1,8 +1,13 @@
-name: Publish docs
+name: Publish Wiki
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+    workflow-dispatch:
 
 jobs:
   publish:
