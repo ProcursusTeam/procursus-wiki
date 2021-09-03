@@ -3,8 +3,6 @@ name: Publish docs
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'docs/*.md'
 
 jobs:
   publish:
