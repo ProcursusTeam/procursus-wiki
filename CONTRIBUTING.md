@@ -1,7 +1,9 @@
-# Contributing to the Documentation
+# Contributing to the wiki
+
 Before you open a new pull request, there are a few requirements that need to be met, but they're not too unresonable.
 
 ## Contribution Process
+
 1. Fork the project locally and make changes relevant to what you're trying to add/fix in a different branch
 
 - Your commit must have specific information about the change you made and what page you made the change to. Check the example below
