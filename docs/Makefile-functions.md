@@ -13,6 +13,7 @@ The table below showcases current functions used across all Procursus projects, 
 | [`GIT_CLONE`](#git_clone) | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
 
 ## `SIGN`
+
 This function recursively signs Mach-O libraries and binaries with `ldid` or `codesign`. The table below showcase the required parameters of the function
 
 | Index | Description |
@@ -29,6 +30,7 @@ The second argument can be any string, as long as the entitlements are within `b
 The example above looks for binaries within `build_dist/nano` and signs them with entitlements specified in `build_misc/entitlements/general.xml`, which is often used to apply general entitlements to binaries and Mach-O libraries.
 
 ## `PACK`
+
 This functions creates a Debian package with `dpkg` or `dm.pl` for a given project. The table below showcases all parameters required for the function to work
 
 | Index | Description |
@@ -48,6 +50,7 @@ The function looks for package files in `build_dist`, and puts them accordingly,
 The example above packs files relating to `youtube-dl` (which would be in `build_dist/youtube-dl`), and replaces `DEB_YOUTUBE_DL_V` in the control file with the version number assigned to that variable.
 
 ## `DO_PATCH`
+
 This function applies patches/changes necessary for a project to function on a specific platform. The table below showcases all parameters required for the function to work
 
 | Index | Description |
@@ -67,9 +70,9 @@ Patches are generally a good idea when dealing with a big project that requires 
 
 ## `AFTER_BUILD`
 
-This function creates build system related files which indicate the build status of a package. The file it generates, `.build_complete`, indicates that a specific package has already been built.
+This function has several jobs; by default, the function will create build system realted files indicating that a package has been sucessfully built. It will also compress included manpages for the package being built.
 
-The function is also capable of copying files to `build_base`, by passing "copy" as an argument. This is useful when other packages require files one package.
+The function takes an optional argument, "copy", which indicates that package files, once built, should be put withing `build_base`. This is useful when other packages requires files from the package being built.
 
 ### Basic example
 
@@ -84,6 +87,7 @@ The function is also capable of copying files to `build_base`, by passing "copy"
         $(call AFTER_BUILD,copy)
 
 ## `GITHUB_ARCHIVE`
+
 This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
 
 | Index | Status | Description |
@@ -131,6 +135,7 @@ There many ways in which you can manipulate this specific function in your Makef
     # tarball: $(BUILD_SOURCE)/ghostbin-v0e0a3b72c3379e51bf03fe676af3a74a01239a47.tar.gz
 
 ## `GIT_CLONE`
+
 Like `GITHUB_ARCHIVE`, except this function extends support for projects that are outside of Github or don't provide any release tarballs. Below is more documentation about specific parameters
 
 | Index | Status | Description |
@@ -148,6 +153,7 @@ The folder where the files are cloned will always in `build_work`, since the fun
     $(call GIT_CLONE,https://aomedia.googlesource.com/aom.git,v$(AOM_VERSION),aom)
 
 ## `EXTRACT_TAR`
+
 This function is used to extract a tarball downloaded through `wget` or `GITHUB_ARCHIVE`. The table below documents the 3 arguments that this function requires
 
 | Index | Status | Description |
