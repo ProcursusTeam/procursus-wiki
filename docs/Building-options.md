@@ -30,3 +30,4 @@ These commands can have specific build flags attached to them; the table below s
 | `MEMO_ALT_LTO_LIB` | No | Specify an alternative libLTO.{so,dylib} path that will be passed to the linker with `-lto_library`. | `/usr/local/llvm11/lib/libLTO.so` |
 | `MEMO_LDID_EXTRA_FLAGS` | No | Specify further arguments/flags for `ldid` | You can use this to specify a .p12 certificate with the -K flag. |
 | `MEMO_CODESIGN_EXTRA_FLAGS` | No | Specify further arguments/flags for `codesign`, though it should only be used when signing, not when removing signatures. | |
+| `MEMO_NO_IOSEXEC` | No | Disable linking `libiosexec` in every package hosted by Procursus.| `MEMO_NO_IOSEXEC=1` |
