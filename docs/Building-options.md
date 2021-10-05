@@ -1,6 +1,9 @@
-This specific page documents specific build options and flags that can be used in order to build packages for Procursus. The variables listed here can all be found within the `Makefile`.
+This specific page documents specific build options and flags that can
+be used in order to build packages for Procursus. The variables listed
+here can all be found within the `Makefile`.
 
-The table below showcases supported commands (along its function) provided by Procursus
+The table below showcases supported commands (along its function)
+provided by Procursus
 
 | Command | Function |
 |---------|----------|
@@ -15,7 +18,9 @@ The table below showcases supported commands (along its function) provided by Pr
 | `make clean` | Cleans out and removes `build_base`, `build_stage`, and `build_work` |
 | `make extreme-clean` | Similar to `make clean`, cleaning out and removing `build_source`, `build_strap`, and `build_dist` |
 
-These commands can have specific build flags attached to them; the table below showcases build flags you can pass as options when using Procursus build commands
+These commands can have specific build flags attached to them; the
+table below showcases build flags you can pass as options when using
+Procursus build commands
 
 | Variable | Required | Function | Example |
 |----------|----------|----------|---------|

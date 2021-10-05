@@ -1,6 +1,9 @@
-This specific page documents functions used in all Procursus packages, each having its purpose. These functions can be found within the `Makefile`.
+This specific page documents functions used in all Procursus packages,
+each having its purpose. These functions can be found within the
+`Makefile`.
 
-The table below showcases current functions used across all Procursus projects, and where to use them when creating a new package.
+The table below showcases current functions used across all Procursus
+projects, and where to use them when creating a new package.
 
 | Function | Description | Used in |
 |----------|-------------|---------|
@@ -14,31 +17,42 @@ The table below showcases current functions used across all Procursus projects, 
 
 ## `SIGN`
 
-This function recursively signs Mach-O libraries and binaries with `ldid` or `codesign`. The table below showcase the required parameters of the function
+This function recursively signs Mach-O libraries and binaries with
+`ldid` or `codesign`. The table below showcase the required parameters
+of the function
 
 | Index | Description |
 |-------|-------------|
 | 1 | Name of the project with binaries; always in `build_dist` |
 | 2 | File name that includes specific entitlements for binaries |
 
-The second argument can be any string, as long as the entitlements are within `build_misc/entitlements`.
+The second argument can be any string, as long as the entitlements are
+within `build_misc/entitlements`.
 
 #### Example
 
     $(call SIGN,nano,general.xml)
 
-The example above looks for binaries within `build_dist/nano` and signs them with entitlements specified in `build_misc/entitlements/general.xml`, which is often used to apply general entitlements to binaries and Mach-O libraries.
+The example above looks for binaries within `build_dist/nano` and signs
+them with entitlements specified in `build_misc/entitlements/general
+xml`, which is often used to apply general entitlements to binaries and
+Mach-O libraries.
 
 ## `PACK`
 
-This functions creates a Debian package with `dpkg` or `dm.pl` for a given project. The table below showcases all parameters required for the function to work
+This functions creates a Debian package with `dpkg` or `dm.pl` for a
+given project. The table below showcases all parameters required for
+the function to work
 
 | Index | Description |
 |-------|-------------|
 | 1 | Folder name where a control file might reside in for the project |
 | 2 | Version variable that is in the control file that will be replaced |
 
-The function looks for package files in `build_dist`, and puts them accordingly, while also changing the package's control file, where specific variables are replaced, such as the maintainer of the package, and the version number
+The function looks for package files in `build_dist`, and puts them
+accordingly, while also changing the package's control file, where
+specific variables are replaced, such as the maintainer of the package,
+and the version number
 
 #### Example
 
@@ -47,32 +61,47 @@ The function looks for package files in `build_dist`, and puts them accordingly,
 
     $(call PACK,youtube-dl,DEB_YOUTUBE_DL_V)
 
-The example above packs files relating to `youtube-dl` (which would be in `build_dist/youtube-dl`), and replaces `DEB_YOUTUBE_DL_V` in the control file with the version number assigned to that variable.
+The example above packs files relating to `youtube-dl` (which would be
+in `build_dist/youtube-dl`), and replaces `DEB_YOUTUBE_DL_V` in the
+control file with the version number assigned to that variable.
 
 ## `DO_PATCH`
 
-This function applies patches/changes necessary for a project to function on a specific platform. The table below showcases all parameters required for the function to work
+This function applies patches/changes necessary for a project to
+function on a specific platform. The table below showcases all
+parameters required for the function to work
 
 | Index | Description |
 |-------|-------------|
 | 1 | Folder name where patches are located; generally inside `build_patch` |
 | 2 | Folder name where patches should be applied to. This generally matches the name of the first argument, and the folder must exist in `build_work` |
 
-*The last arguement of the function is undocumented as it's generally the same across all projects.*
+*The last arguement of the function is undocumented as it's generally
+the same across all projects.*
 
 #### Example
 
     $(call DO_PATCH,youtube-dl,youtube-dl,-p1)
 
-The example above looks for patches inside `build_patch/youtube-dl` and applies each patch (or diff) found to the project, `youtube-dl` (which can be found in `build_work/youtube-dl`).
+The example above looks for patches inside `build_patch/youtube-dl` and
+applies each patch (or diff) found to the project, `youtube-dl` (which
+can be found in `build_work/youtube-dl`).
 
-Patches are generally a good idea when dealing with a big project that requires specific changes (that can't be put on the project's repository or isn't part of the project's upstream yet) for a specific platform.
+Patches are generally a good idea when dealing with a big project that
+requires specific changes (that can't be put on the project's
+repository or isn't part of the project's upstream yet) for a specific
+platform.
 
 ## `AFTER_BUILD`
 
-This function has several jobs; by default, the function will create build system realted files indicating that a package has been sucessfully built. It will also compress included manpages for the package being built.
+This function has several jobs; by default, the function will create
+build system realted files indicating that a package has been
+sucessfully built. It will also compress included manpages for the
+package being built.
 
-The function takes an optional argument, "copy", which indicates that package files, once built, should be put withing `build_base`. This is useful when other packages requires files from the package being built.
+The function takes an optional argument, "copy", which indicates that
+package files, once built, should be put withing `build_base`. This is
+useful when other packages requires files from the package being built.
 
 ### Basic example
 
@@ -88,7 +117,9 @@ The function takes an optional argument, "copy", which indicates that package fi
 
 ## `GITHUB_ARCHIVE`
 
-This function is used to download a Github archive of a specific project. The following table showcases documentation for parameters used by this function
+This function is used to download a Github archive of a specific
+project. The following table showcases documentation for parameters
+used by this function
 
 | Index | Status | Description |
 |-------|--------|-------------|
@@ -98,7 +129,8 @@ This function is used to download a Github archive of a specific project. The fo
 | 4 | Required | Release tag, branch name, or git hash from which an archive will be made from |
 | 5 | Not required | Specifies a different name for the downloaded tarball. Use this if the tarball name is different than the repository name specified in parameter 3 |
 
-There many ways in which you can manipulate this specific function in your Makefile. The examples below showcase most instances
+There many ways in which you can manipulate this specific function in
+your Makefile. The examples below showcase most instances
 
 #### Tag example
 
@@ -136,7 +168,9 @@ There many ways in which you can manipulate this specific function in your Makef
 
 ## `GIT_CLONE`
 
-Like `GITHUB_ARCHIVE`, except this function extends support for projects that are outside of Github or don't provide any release tarballs. Below is more documentation about specific parameters
+Like `GITHUB_ARCHIVE`, except this function extends support for
+projects that are outside of Github or don't provide any release
+tarballs. Below is more documentation about specific parameters
 
 | Index | Status | Description |
 |-------|--------|-------------|
@@ -144,7 +178,8 @@ Like `GITHUB_ARCHIVE`, except this function extends support for projects that ar
 | 2 | Required | Branch that will be checkout upon cloning |
 | 3 | Required | Name of the folder where the project should be cloned to |
 
-The folder where the files are cloned will always in `build_work`, since the function doesn't take direct paths as arguments.
+The folder where the files are cloned will always in `build_work`,
+since the function doesn't take direct paths as arguments.
 
 #### Example
 
@@ -154,7 +189,9 @@ The folder where the files are cloned will always in `build_work`, since the fun
 
 ## `EXTRACT_TAR`
 
-This function is used to extract a tarball downloaded through `wget` or `GITHUB_ARCHIVE`. The table below documents the 3 arguments that this function requires
+This function is used to extract a tarball downloaded through `wget` or
+`GITHUB_ARCHIVE`. The table below documents the 3 arguments that this
+function requires
 
 | Index | Status | Description |
 |-------|--------|-------------|
@@ -162,7 +199,9 @@ This function is used to extract a tarball downloaded through `wget` or `GITHUB_
 | 2 | Required | Name of the folder extracted from downloaded tarball |
 | 3 | Required | Folder name where tarball files should be copied to |
 
-The function does not take direct paths; the first argument looks for tarballs in `build_source`, extracts the contents in that same directory, and then copies them over to `build_work`.
+The function does not take direct paths; the first argument looks for
+tarballs in `build_source`, extracts the contents in that same
+directory, and then copies them over to `build_work`.
 
 #### Example
 
@@ -171,4 +210,6 @@ The function does not take direct paths; the first argument looks for tarballs i
     $(call GITHUB_ARCHIVE,quiprr,appuninst,$(APPUNINST_VERSION),v$(APPUNINST_VERSION))
     $(call EXTRACT_TAR,appuninst-$(APPUNINST_VERSION).tar.gz,appuninst-$(APPUNINST_VERSION),appuninst)
 
-The example above extracts the tarball downloaded from Github into `build_source/appuninst-$(APPUNINST_VERSION)` — then, those files are copied to `build_work/appuninst`.
+The example above extracts the tarball downloaded from Github into
+`build_source/appuninst-$(APPUNINST_VERSION)` — then, those files are
+copied to `build_work/appuninst`.
