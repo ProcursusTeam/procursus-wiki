@@ -99,9 +99,9 @@ build system realted files indicating that a package has been
 sucessfully built. It will also compress included manpages for the
 package being built.
 
-The function takes an optional argument, "copy", which indicates that
-package files, once built, should be put withing `build_base`. This is
-useful when other packages requires files from the package being built.
+The function takes an optional argument, which indicates that package
+files, once built, should be put withing `build_base`. This is useful
+when other packages requires files from the package being built.
 
 ### Basic example
 
@@ -125,7 +125,7 @@ used by this function
 |-------|--------|-------------|
 | 1 | Required | Github user or organization from which the project comes from |
 | 2 | Required | Project/repository name from which an archive will be made from. This is also used as the filename for the downloaded tarball unless paramater 5 is given |
-| 3 | Required | Specific paramter which appends the given version number to the downloaded tarball filename |
+| 3 | Required | Specific parameter which appends the given version number to the downloaded tarball filename |
 | 4 | Required | Release tag, branch name, or git hash from which an archive will be made from |
 | 5 | Not required | Specifies a different name for the downloaded tarball. Use this if the tarball name is different than the repository name specified in parameter 3 |
 
@@ -175,7 +175,7 @@ tarballs. Below is more documentation about specific parameters
 | Index | Status | Description |
 |-------|--------|-------------|
 | 1 | Required | Link of the project that should be cloned |
-| 2 | Required | Branch that will be checkout upon cloning |
+| 2 | Required | Branch that will be checked out upon cloning |
 | 3 | Required | Name of the folder where the project should be cloned to |
 
 The folder where the files are cloned will always in `build_work`,

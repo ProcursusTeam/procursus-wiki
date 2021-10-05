@@ -24,11 +24,11 @@ Procursus on FreeBSD
         curl -LO "https://gist.githubusercontent.com/asdfugil/71cdfca5aa1bc0d59de06518cd1c530c/raw/37429856ec922063f86e60693bce4027d56aab96/procursus-utils-fbsd.sh" | bash
 
     It's recommended that you add this script to your shells' config
-    file, so that it's sourced on every enviorment on login.
+    file, so that it's sourced on every environment on login.
 
         echo "source procursus-utils-fbsd.sh" > ~/.profile
 
-    Then, reload your shell or reload your shell's config file.
+    Then, reopen your shell or reload your shell's config file.
 
         source ~/.profile
 
@@ -48,6 +48,5 @@ Procursus on FreeBSD
     compile packages from Procursus.
 
     Similar to other supported platforms, it's likely that some
-    packages (particularly those that need Go, Python, and/or NodeJS)
-    will fail to compile. You'll need a macOS build system if this is
-    the case.
+    packages (particularly those that need Python or NodeJS) will fail
+    to compile. You'll need a macOS build system if this is the case.

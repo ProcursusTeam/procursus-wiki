@@ -1,4 +1,4 @@
-Building Procursus packages on GNU Linux is possible with [cctools-port](https://github.com/tpoechtrager/cctools-port). While there's no
+Building Procursus packages on GNU/Linux is possible with [cctools-port](https://github.com/tpoechtrager/cctools-port). While there's no
 specific Linux distro that you should use, it's recommended that you
 use a fairly known distro (e.g Debian).
 
@@ -32,7 +32,7 @@ you, you'll need to manually setup your build system.
 
 2. Download your iOS SDK
 
-    Unlike other platforms, your iOS SDK on Linxu needs a bit of
+    Unlike other platforms, your iOS SDK on Linux needs a bit of
     "surgery", since you'll need to add C++ standard libraries to it.
     Checkout the repositories below and get everything you need from
     them
@@ -87,7 +87,7 @@ you, you'll need to manually setup your build system.
 
     You can then add the new path (~/cctools) to your shell's
     configuration profile (e.g .profile, .bashrc, .zshrc). Make sure to
-    reload your config file or relogin to a new shell
+    restart your shell or reload your config file
 
         if [ -d "$HOME/cctools" ]; then
             PATH="$HOME/cctools/bin:$PATH"
@@ -122,9 +122,8 @@ you, you'll need to manually setup your build system.
     compile packages from Procursus
 
     Similar to other supported platforms, it's likely that some
-    packages (particularly those that need Go, Python, and/or NodeJS)
-    will fail to compile. You'll need a macOS build system if this is
-    the case
+    packages (particularly those that need Python or NodeJS) will fail
+    to compile. You'll need a macOS build system if this is the case
 
     If you find yourself needing a macOS build system, you can [setup
     macOS in a KVM](https://github.com/foxlet/macOS-Simple-KVM) and
