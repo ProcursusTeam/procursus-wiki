@@ -14,6 +14,7 @@ projects, and where to use them when creating a new package.
 | [`EXTRACT_TAR`](#extract_tar) | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
 | [`GITHUB_ARCHIVE`](#github_archive) | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
 | [`GIT_CLONE`](#git_clone) | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
+| [`CHECKSUM_VERIFY`](#checksum_verify) | Checks the checksum of the package's tarball using the specified algorithm | Setup stage (`(tool)-setup`) |
 
 ## `SIGN`
 
@@ -99,6 +100,14 @@ build system realted files indicating that a package has been
 sucessfully built. It will also compress included manpages for the
 package being built.
 
+The table below showcases optional arguments that the function can
+take
+
+| Index | Description |
+|-------|-------------|
+| 1 | Indicates if package files should be put within `build_base` |
+| 2 | Folder indicating which packages should be marked as built | |
+
 The function takes an optional argument, which indicates that package
 files, once built, should be put withing `build_base`. This is useful
 when other packages requires files from the package being built.
@@ -114,6 +123,14 @@ when other packages requires files from the package being built.
     apt: apt-setup ... # Other dependencies
         ...
         $(call AFTER_BUILD,copy)
+
+#### Marking other packages as finished
+
+	byacc: byacc-setup
+		...
+		# Only use this if other folders relate to a package
+		$(call AFTER_BUILD,,byacc/byacc)
+		$(call AFTER_BUILD,,byacc/byacc2)
 
 ## `GITHUB_ARCHIVE`
 
@@ -213,3 +230,23 @@ directory, and then copies them over to `build_work`.
 The example above extracts the tarball downloaded from Github into
 `build_source/appuninst-$(APPUNINST_VERSION)` — then, those files are
 copied to `build_work/appuninst`.
+
+## `CHECKSUM_VERIFY`
+
+This function checks the hash of a package's tarball, downloaded through
+`wget` or with `GITHUB_ARCHIVE`. The table contains further information
+on the specific arguments that this function can receive
+
+| Index | Status | Description |
+|-------|--------|-------------|
+| 1 | Required | Type of hash algorithm that should be used |
+| 2 | Required | File name of the tarball whose checksum should be checked |
+
+The first arguement can be one out of the following algorithm: `sha1`, `sha256`, or `sha512`
+
+### Example
+
+	zstd-setup: setup
+		...
+		$(call CHECKSUM_VERIFY,sha256,zstd-$(ZSTD_VERSION).tar.gz)
+		...
