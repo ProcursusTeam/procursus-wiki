@@ -7,14 +7,14 @@ projects, and where to use them when creating a new package.
 
 | Function | Description | Used in |
 |----------|-------------|---------|
-| [`SIGN`](#sign) | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
-| [`PACK`](#pack) | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
-| [`DO_PATCH`](#do_patch) | Applies patches/changes nessesary by a project to function | Setup stage (`(tool)-setup`) |
-| [`AFTER_BUILD`](#after_build) | Creates build system related files which indicate the status of a package (`.build_complete`) | Package function (`(tool)`), which inherits the package stage | 
-| [`EXTRACT_TAR`](#extract_tar) | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
-| [`GITHUB_ARCHIVE`](#github_archive) | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
-| [`GIT_CLONE`](#git_clone) | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
-| [`CHECKSUM_VERIFY`](#checksum_verify) | Checks the checksum of the package's tarball using the specified algorithm | Setup stage (`(tool)-setup`) |
+| [`SIGN`] | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
+| [`PACK`] | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
+| [`DO_PATCH`] | Applies patches/changes nessesary by a project to function | Setup stage (`(tool)-setup`) |
+| [`AFTER_BUILD`] | Creates build system related files which indicate the status of a package (`.build_complete`) | Package function (`(tool)`), which inherits the package stage |
+| [`EXTRACT_TAR`] | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
+| [`GITHUB_ARCHIVE`] | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
+| [`GIT_CLONE`] | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
+| [`CHECKSUM_VERIFY`] | Checks the checksum of the package's tarball using the specified algorithm | Setup stage (`(tool)-setup`) |
 
 ## `SIGN`
 
@@ -126,11 +126,11 @@ when other packages requires files from the package being built.
 
 #### Marking other packages as finished
 
-	byacc: byacc-setup
-		...
-		# Only use this if other folders relate to a package
-		$(call AFTER_BUILD,,byacc/byacc)
-		$(call AFTER_BUILD,,byacc/byacc2)
+    byacc: byacc-setup
+        ...
+        # Only use this if other folders relate to a package
+        $(call AFTER_BUILD,,byacc/byacc)
+        $(call AFTER_BUILD,,byacc/byacc2)
 
 ## `GITHUB_ARCHIVE`
 
@@ -246,7 +246,16 @@ The first arguement can be one out of the following algorithm: `sha1`, `sha256`,
 
 ### Example
 
-	zstd-setup: setup
-		...
-		$(call CHECKSUM_VERIFY,sha256,zstd-$(ZSTD_VERSION).tar.gz)
-		...
+    zstd-setup: setup
+        ...
+        $(call CHECKSUM_VERIFY,sha256,zstd-$(ZSTD_VERSION).tar.gz)
+        ...
+
+[`SIGN`]: #sign
+[`PACK`]: #pack
+[`DO_PATCH`]: #do_patch
+[`AFTER_BUILD`]: #after_build
+[`EXTRACT_TAR`]: #extract_tar
+[`GITHUB_ARCHIVE`]: #github_archive
+[`GIT_CLONE`]: #git_clone
+[`CHECKSUM_VERIFY`]: #checksum_verify

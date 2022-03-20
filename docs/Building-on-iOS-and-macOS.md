@@ -26,14 +26,14 @@ Procursus.
     installed toolchain already contains an iOS SDK). Check the
     repositories below and get what you need
 
-    - [MacOSX-SDKs](https://github.com/phracker/MacOSX-SDKs) for macOS SDKs
-    - [xybp888/iOS-SDKs](https://github.com/xybp888/iOS-SDKs) for iOS
+    - [phracker/MacOSX-SDKs] for macOS SDKs
+    - [xybp888/iOS-SDKs] for iOS
     SDKs (in case you'd like to use a different SDK)
 
     You'd likely want to checkout the default values of your specific
     platform, since each support platform use a different path for SDKs
 
-    Ideally, you can also export SDK variables from the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options)
+    Ideally, you can also export SDK variables from the [Build options]
     page on your shell configuration file
 
 3. Clone the Procursus build system
@@ -46,7 +46,11 @@ Procursus.
     the main platform where all packages should (and will) build
 
     To test your own build system setup, attempt to build `bash`.
-    Checkout the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page to see what valid options can be
+    Checkout the [Build options] page to see what valid options can be
     passed
 
         make bash-package [OPTIONS]
+
+[phracker/MacOSX-SDKs]: https://github.com/phracker/MacOSX-SDKs
+[xybp888/iOS-SDKs]: https://github.com/xybp888/iOS-SDKs
+[Build options]: https://github.com/ProcursusTeam/Procursus/wiki/Build-options

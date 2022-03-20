@@ -1,5 +1,5 @@
-Building Procursus packages on GNU/Linux is possible with [cctools-port](https://github.com/tpoechtrager/cctools-port). While there's no
-specific Linux distro that you should use, it's recommended that you
+Building Procursus packages on GNU/Linux is possible with [cctools-port]. While
+there's no specific Linux distro that you should use, it's recommended that you
 use a fairly known distro (e.g Debian).
 
 If you're using Debian (specifically Unstable or Buster), you can use a
@@ -37,10 +37,8 @@ you, you'll need to manually setup your build system.
     Checkout the repositories below and get everything you need from
     them
 
-    - [okanon/iPhoneOS.sdk](https://github.com/okanon/iPhoneOS.sdk),
-    which has some iOS SDKs
-    - [xybp888/iOS-SDKs](https://github.com/xybp888/iOS-SDKs), which
-    might have up-to-date iOS SDKs
+    - [okanon/iPhoneOS.sdk], which has some iOS SDKs
+    - [xybp888/iOS-SDKs], which might have up-to-date iOS SDKs
 
     It's prefered that you get an SDK for iOS 13 or above. Once you
     have your iOS SDK, add the C++ libraries
@@ -96,8 +94,7 @@ you, you'll need to manually setup your build system.
 5. Get your macOS SDK
 
     Unlike your iOS SDK, you can just download a macOS SDK from
-    [phracker/MacOSX-SDKs](https://github.com/phracker/MacOSX-SDKs),
-    extract it, and move it to `~/cctools/SDK`
+    [phracker/MacOSX-SDKs], extract it, and move it to `~/cctools/SDK`
 
     It's recommended that you use the latest available SDK in the
     repository above
@@ -108,13 +105,12 @@ you, you'll need to manually setup your build system.
         rm MacOSX11.3.sdk.tar.xz
 
     You can also specify and export SDK variables to use a differnet
-    path. Check out the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page for more
-    documentation
+    path. Check out the [Build options] age for more ocumentation
 
 6. Build!
 
     To check whether you did everything correctly, attempt to build
-    `bash` with a few options from the [Build options](https://github.com/ProcursusTeam/Procursus/wiki/Build-options) page
+    `bash` with a few options from the [Build options] page
 
         make bash [OPTIONS]
 
@@ -126,5 +122,12 @@ you, you'll need to manually setup your build system.
     to compile. You'll need a macOS build system if this is the case
 
     If you find yourself needing a macOS build system, you can [setup
-    macOS in a KVM](https://github.com/foxlet/macOS-Simple-KVM) and
-    [follow the macOS instructions](https://github.com/ProcursusTeam/Procursus/wiki/Building-on-iOS-and-macOS).
+    macOS in a KVM] and follow the [macOS instructions].
+
+[cctools-port]: https://github.com/tpoechtrager/cctools-port
+[okanon/iPhoneOS.sdk]: https://github.com/okanon/iPhoneOS.sdk
+[xybp888/iOS-SDKs]: https://github.com/xybp888/iOS-SDKs
+[phracker/MacOSX-SDKs]: https://github.com/phracker/MacOSX-SDKs
+[Build options]: https://github.com/ProcursusTeam/Procursus/wiki/Build-options
+[setup macOS in a KVM]: https://github.com/foxlet/macOS-Simple-KVM
+[macOS instructions]: https://github.com/ProcursusTeam/Procursus/wiki/Building-on-iOS-and-macOS
