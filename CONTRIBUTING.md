@@ -1,25 +1,36 @@
 # Contributing to the wiki
 
-Before you open a new pull request, there are a few requirements that need to be met, but they're not too unresonable.
+Before you open a new pull request, the are a few requirements
+that need to be met, but they're not too unresonable.
 
 ## Contribution Process
 
-1. Fork the project locally and make changes relevant to what you're trying to add/fix in a different branch
+1. Fork the project locally and make changes relevant to what
+   you're trying to add/fix in a different branch
 
-- Your commit must have specific information about the change you made and what page you made the change to. Check the example below
+    - Your commit must have specific information about the change you
+      made and what page you made the change to. Check the example below
 
-        [iOS/macOS] Add new dependencies
+            [iOS/macOS] Add new dependencies
 
-- If your commit adds a new page, use the following format
+    - If your commit adds a new page, use the following format
 
-        [New] Add iOS/macOS building docs
+            [New] Add iOS/macOS building docs
 
-  It's okay to forget any of this; it will be changed before being merged, but try to do this yourself
+    It's okay to forget any of this; it will be changed before being merged,
+    but try to do this yourself
 
-2. Create a new pull request for your change in your specific branch. While not an official requirement, please provide a small description of your change
+1. Create a new pull request for your change in your specific branch.
+   While not an official requirement, please provide a small description
+   of your change
 
-Don't expect changes to merged and pushed to upstream quickly; while the review process doesn't take long, it is not automatic.
+Don't expect changes to merged and pushed to upstream quickly; while the
+review process doesn't take long, it is not automatic. If you'd like to
+have a higher chance for your changes to be merged faster, make sure that
+your changes don't have any grammatical errors
 
-- If you'd like to have a higher chance for your changes to be merged faster, make sure that your changes don't have any grammatical errors
+Once all guidelines are met, your pull request will be merged and pushed to
+upstream and your changes will be reflected. If you have any further questions
+or concerns, join the official [Procursus Discord Server].
 
-Once all guidelines are met, your pull request will be merged and pushed to upstream and your changes will be reflected. If you have any further questions or concerns, you can join [Hayden's Discord Server](https://diatr.us/discord).
+[Procursus Discord Server]: https://diatr.us/discord
