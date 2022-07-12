@@ -15,6 +15,8 @@ projects, and where to use them when creating a new package.
 | [`GITHUB_ARCHIVE`] | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
 | [`GIT_CLONE`] | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
 | [`CHECKSUM_VERIFY`] | Checks the checksum of the package's tarball using the specified algorithm | Setup stage (`(tool)-setup`) |
+| [`DOWNLOAD_FILE`] | Downloads a file to a direct path from the given URL | Setup stage (`(tool)-setup`) |
+| [`DOWNLOAD_FILES`] | Like `DOWNLOAD_FILE`, but can take multiple URLs | Setup stage (`(tool)-setup`) |
 
 ## `SIGN`
 
@@ -251,6 +253,72 @@ The first arguement can be one out of the following algorithm: `sha1`, `sha256`,
         $(call CHECKSUM_VERIFY,sha256,zstd-$(ZSTD_VERSION).tar.gz)
         ...
 
+## `DOWNLOAD_FILE`
+
+This function downloads a file from the given URL using `curl` to a
+give direct path. This replace any direct calls to `wget`, and is the
+new alternative to downloading project tarballs that GITHUB_ARCHIVE
+cannot acquire.
+
+The following table contains information about the arguments that the
+function takes
+
+| Index | Status | Description |
+|-------|--------|-------------|
+| 1 | Required | Direct path where the file will be downloaded to |
+| 2 | Required | Single URL where the file is hosted |
+
+### Example
+
+    jlutil-setup: setup
+        $(call DOWNLOAD_FILE,$(BUILD_SOURCE)/jlutil-$(JLUTIL_VERSION).tar.gz, \
+                http://newosxbook.com/tools/jlutil.tgz)
+        ...
+
+## `DOWNLOAD_FILES`
+
+Unlike [`DOWNLOAD_FILE`], this function downloads several files from a URL
+(or list of URLs) to a specified directory path, and can be used to download
+several tarballs needed for a project to fully build.
+
+The following table contains information about the arguments that the
+function takes
+
+| Index | Status | Description |
+|-------|--------|-------------|
+| 1 | Required | Directory path where files will download to |
+| 2 | Required | Single or list of URLs of files to download |
+
+In some instances, developers provide extra files in project tarballs
+through Github releases; Always use [`GITHUB_ARCHIVE`] unless this scenario
+fits a specific project you're working on.
+
+### Example
+
+#### Downloading one file
+
+    apt-setup: setup
+        $(call DOWNLOAD_FILES,$(BUILD_SOURCE),https://salsa.debian.org/apt-team/apt/-/archive/$(APT_VERSION)/apt-$(APT_VERSION).tar.gz)
+        ...
+
+#### Downloading multiple files
+
+This is (due to how functions in Make work) the only quirk that this function
+has over others.
+
+If you'd like to download multiple files, such as a public PGP key to check
+the validity of a tarball with [`PGP_VERIFY`], make sure to use the variable,
+`$(comma)` to separate URLs.
+
+    # Before
+    zstd-setup: setup
+        wget -q -nc -P $(BUILD_SOURCE) https://github.com/facebook/zstd/releases/download/v$(ZSTD_VERSION)/zstd-$(ZSTD_VERSION).tar.gz{,.sig,.sha256}
+
+    # with DOWNLOAD_FILES
+    zstd-setup: setup
+        $(call DOWNLOAD_FILES,$(BUILD_SOURCE),https://github.com/facebook/zstd/releases/download/v$(ZSTD_VERSION)/zstd-$(ZSTD_VERSION).tar.gz{$(comma).sig$(comma).sha256})
+
+
 [`SIGN`]: #sign
 [`PACK`]: #pack
 [`DO_PATCH`]: #do_patch
@@ -259,3 +327,5 @@ The first arguement can be one out of the following algorithm: `sha1`, `sha256`,
 [`GITHUB_ARCHIVE`]: #github_archive
 [`GIT_CLONE`]: #git_clone
 [`CHECKSUM_VERIFY`]: #checksum_verify
+[`DOWNLOAD_FILE`]: #download_file
+[`DOWNLOAD_FILES`]: #download_files
