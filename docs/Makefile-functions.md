@@ -9,7 +9,7 @@ projects, and where to use them when creating a new package.
 |----------|-------------|---------|
 | [`SIGN`] | Recursively signs Mach-O libraries and binaries with `ldid` or `codesign` | Package stage (`(tool)-package`) |
 | [`PACK`] | Creates a Debian package with `dpkg` or `dm.pl` for the given project | Package stage (`(tool)-package`) |
-| [`DO_PATCH`] | Applies patches/changes nessesary by a project to function | Setup stage (`(tool)-setup`) |
+| [`DO_PATCH`] | Applies patches/changes necessary by a project to function | Setup stage (`(tool)-setup`) |
 | [`AFTER_BUILD`] | Creates build system related files which indicate the status of a package (`.build_complete`) | Package function (`(tool)`), which inherits the package stage |
 | [`EXTRACT_TAR`] | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
 | [`GITHUB_ARCHIVE`] | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
@@ -79,7 +79,7 @@ parameters required for the function to work
 | 1 | Folder name where patches are located; generally inside `build_patch` |
 | 2 | Folder name where patches should be applied to. This generally matches the name of the first argument, and the folder must exist in `build_work` |
 
-*The last arguement of the function is undocumented as it's generally
+*The last argument of the function is undocumented as it's generally
 the same across all projects.*
 
 #### Example
@@ -97,9 +97,9 @@ platform.
 
 ## `AFTER_BUILD`
 
-This function has several jobs; by default, the function will create
-build system realted files indicating that a package has been
-sucessfully built. It will also compress included manpages for the
+This function has several jobs. By default, the function will create
+build system related files indicating that a package has been
+successfully built. It will also compress included manpages for the
 package being built.
 
 The table below showcases optional arguments that the function can
@@ -143,7 +143,7 @@ used by this function
 | Index | Status | Description |
 |-------|--------|-------------|
 | 1 | Required | Github user or organization from which the project comes from |
-| 2 | Required | Project/repository name from which an archive will be made from. This is also used as the filename for the downloaded tarball unless paramater 5 is given |
+| 2 | Required | Project/repository name from which an archive will be made from. This is also used as the filename for the downloaded tarball unless parameter 5 is given |
 | 3 | Required | Specific parameter which appends the given version number to the downloaded tarball filename |
 | 4 | Required | Release tag, branch name, or git hash from which an archive will be made from |
 | 5 | Not required | Specifies a different name for the downloaded tarball. Use this if the tarball name is different than the repository name specified in parameter 3 |
@@ -187,7 +187,7 @@ your Makefile. The examples below showcase most instances
 
 ## `GIT_CLONE`
 
-Like `GITHUB_ARCHIVE`, except this function extends support for
+Like [`GITHUB_ARCHIVE`], except this function extends support for
 projects that are outside of Github or don't provide any release
 tarballs. Below is more documentation about specific parameters
 
@@ -208,9 +208,9 @@ since the function doesn't take direct paths as arguments.
 
 ## `EXTRACT_TAR`
 
-This function is used to extract a tarball downloaded through `wget` or
-`GITHUB_ARCHIVE`. The table below documents the 3 arguments that this
-function requires
+This function is used to extract a tarball downloaded with [`DOWNLOAD_FILE`],
+[`DOWNLOAD_FILES`], or [`GITHUB_ARCHIVE`]. The table below documents the 3
+arguments that this function requires
 
 | Index | Status | Description |
 |-------|--------|-------------|
@@ -236,15 +236,16 @@ copied to `build_work/appuninst`.
 ## `CHECKSUM_VERIFY`
 
 This function checks the hash of a package's tarball, downloaded through
-`wget` or with `GITHUB_ARCHIVE`. The table contains further information
-on the specific arguments that this function can receive
+[`DOWNLOAD_FILE`], [`DOWNLOAD_FILES`], or [`GITHUB_ARCHIVE`]. The table
+contains further information on the specific arguments that this function
+can receive
 
 | Index | Status | Description |
 |-------|--------|-------------|
 | 1 | Required | Type of hash algorithm that should be used |
 | 2 | Required | File name of the tarball whose checksum should be checked |
 
-The first arguement can be one out of the following algorithm: `sha1`, `sha256`, or `sha512`
+The first argument can be one out of the following algorithm: `sha1`, `sha256`, or `sha512`
 
 ### Example
 
@@ -303,8 +304,8 @@ fits a specific project you're working on.
 
 #### Downloading multiple files
 
-This is (due to how functions in Make work) the only quirk that this function
-has over others.
+<!-- Maybe rewrite this part later -->
+*This function (due to how functions in Make work) has a small quirk.*
 
 If you'd like to download multiple files, such as a public PGP key to check
 the validity of a tarball with [`PGP_VERIFY`], make sure to use the variable,

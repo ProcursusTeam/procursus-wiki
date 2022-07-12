@@ -104,8 +104,8 @@ you, you'll need to manually setup your build system.
         mv ~/cctools/SDK/MacOSX11.3.sdk ~/cctools/SDK/MacOSX.sdk
         rm MacOSX11.3.sdk.tar.xz
 
-    You can also specify and export SDK variables to use a differnet
-    path. Check out the [Build options] age for more ocumentation
+    You can also specify and export SDK variables to use a different
+    path. Check out the [Build options] age for more documentation
 
 6. Build!
 
