@@ -47,7 +47,7 @@ you, you'll need to manually setup your build system.
         mkdir $TEMPSDKFOLDER/tmp
         wget https://github.com/okanon/iPhoneOS.sdk/releases/download/v0.0.1/iPhoneOS13.2.sdk.tar.gz -O $TEMPSDKFOLDER/iOSSDK.tar.gz
         tar -xf $TEMPSDKFOLDER/iOSSDK.tar.gz -C $TEMPSDKFOLDER/tmp
-        wget https://cdn.discordapp.com/attachments/688121419980341282/725234834024431686/c.zip -O $TEMPSDKFOLDER/iOSC.zip
+        curl --silent -L --create-dir --output $TEMPSDKFOLDER/iOSC.zip https://cdn.discordapp.com/attachments/688121419980341282/725234834024431686/c.zip
         unzip -o $TEMPSDKFOLDER/iOSC.zip -d $TEMPSDKFOLDER/tmp/iPhoneOS13.2.sdk/usr/include
         (
         cd $TEMPSDKFOLDER/tmp/

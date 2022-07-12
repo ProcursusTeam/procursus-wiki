@@ -16,7 +16,7 @@ Procursus.
     Next, install the following packages with your preferred package
     manager or APT
 
-        sudo apt install autoconf automake autopoint bash bison cmake docbook-xml docbook-xsl fakeroot findutils flex gawk git gnupg groff gzip ldid libtool make ncurses-bin openssl patch pkg-config po4a python3 sed tar triehash wget xz-utils zstd
+        sudo apt install autoconf automake autopoint bash bison cmake curl docbook-xml docbook-xsl fakeroot findutils flex gawk git gnupg groff gzip ldid libtool make ncurses-bin openssl patch pkg-config po4a python3 sed tar triehash xz-utils zstd
 
 2. Download your SDKs
 

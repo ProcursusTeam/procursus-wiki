@@ -5,11 +5,11 @@ Building on FreeBSD, much like Linux support, is made possible with
 
     You can install dependencies with `pkg`
 
-        sudo pkg autoconf automake bash cmake coreutils docbook-xsl dpkg fakeroot findutils gettext git gmake gnugrep gnupg gsed gtar libtool ncurses openssl patch perl5 pkgconf po4a python39 wget zstd
+        sudo pkg autoconf automake bash cmake coreutils curl docbook-xsl dpkg fakeroot findutils gettext git gmake gnugrep gnupg gsed gtar libtool ncurses openssl patch perl5 pkgconf po4a python39 zstd
 
     You'll also need to install `triehash`
 
-        wget -O triehash https://raw.githubusercontent.com/julian-klode/triehash/main/triehash.pl
+        curl --silent -L --output triehash https://raw.githubusercontent.com/julian-klode/triehash/main/triehash.pl
         gsed -i 's|#!/usr/bin/perl -w|#!/usr/bin/env perl -w|g' triehash
         sudo mv triehash /usr/local/bin
 
