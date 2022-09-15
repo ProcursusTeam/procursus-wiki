@@ -9,14 +9,14 @@ Procursus.
 
     On macOS, you'll need the latest stable Xcode build. On iOS,
     install the following packages with your preferred package manager
-    (e.g Sileo) or with APT
+    (e.g Sileo), or with APT
 
         sudo apt install clang dsymutil odcctools text-cmds
 
     Next, install the following packages with your preferred package
     manager or APT
 
-        sudo apt install autoconf automake autopoint bash bison cmake curl docbook-xml docbook-xsl fakeroot findutils flex gawk git gnupg groff gzip ldid libtool make ncurses-bin openssl patch pkg-config po4a python3 sed tar triehash xz-utils zstd
+        sudo apt install autoconf automake autopoint bash bison cmake curl docbook-xml docbook-xsl fakeroot findutils flex gawk git gnupg grep groff gzip ldid libtool make ncurses-bin openssl patch pkg-config po4a python3 sed tar triehash xz-utils zstd
 
 2. Download your SDKs
 
