@@ -14,6 +14,7 @@ projects, and where to use them when creating a new package.
 | [`EXTRACT_TAR`] | Extracts a tarball from `build_source` to `build_work` | Setup stage (`(tool)-setup`) |
 | [`GITHUB_ARCHIVE`] | Downloads a Github archive from given parameters. This function makes it easier to download project files from Github | Setup stage (`(tool)-setup`) |
 | [`GIT_CLONE`] | Much like `GITHUB_ARCHIVE`, but clones the specified repo using `git`. | Setup stage (`(tool)-setup`) |
+| [`PGP_VERIFY`] | Verify whether or not a specific source tarball is legitimate | Setup stage (`(tool)-setup`) |
 | [`CHECKSUM_VERIFY`] | Checks the checksum of the package's tarball using the specified algorithm | Setup stage (`(tool)-setup`) |
 | [`DOWNLOAD_FILE`] | Downloads a file to a direct path from the given URL | Setup stage (`(tool)-setup`) |
 | [`DOWNLOAD_FILES`] | Like `DOWNLOAD_FILE`, but can take multiple URLs | Setup stage (`(tool)-setup`) |
@@ -233,6 +234,36 @@ The example above extracts the tarball downloaded from Github into
 `build_source/appuninst-$(APPUNINST_VERSION)` — then, those files are
 copied to `build_work/appuninst`.
 
+## `PGP_VERIFY`
+
+This function allows for a specific source tarball to be verified
+using a given signature key, ultimately proving that the source
+tarball is legitimate.
+
+This is an extra mesure to make sure that whatever is being
+downloaded comes from the place its maintainers push releases
+releases to. The table below documents the 2 arguements that
+this function takes.
+
+| Index | Status | Description |
+|-------|--------|-------------|
+| 1 | Required | Name of tarball requiring verification |
+| 2 | Optional | Type of signature key used (by default, .sig) |
+
+#### Default example
+
+    nano-setup: setup
+        ...
+        $(call PGP_VERIFY,nano-$(NANO_VERSION).tar.xz)
+        ...
+
+#### Different key example
+
+    rsync-setup: setup
+        ...
+        $(call PGP_VERIFY,rsync-$(RSYNC_VERSION).tar.gz,asc)
+        ...
+
 ## `CHECKSUM_VERIFY`
 
 This function checks the hash of a package's tarball, downloaded through
@@ -327,6 +358,7 @@ the validity of a tarball with [`PGP_VERIFY`], make sure to use the variable,
 [`EXTRACT_TAR`]: #extract_tar
 [`GITHUB_ARCHIVE`]: #github_archive
 [`GIT_CLONE`]: #git_clone
+[`PGP_VERIFY`]: #pgp_verify
 [`CHECKSUM_VERIFY`]: #checksum_verify
 [`DOWNLOAD_FILE`]: #download_file
 [`DOWNLOAD_FILES`]: #download_files
