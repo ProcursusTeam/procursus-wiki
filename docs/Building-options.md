@@ -8,7 +8,8 @@ provided by Procursus
 | Command | Function |
 |---------|----------|
 | `make`, `make all`, `make package` | Compiles the entire Procursus suit and packs it into Debian packages |
-| `make env` | Prints the `proenv` shell function to `stdout` to give a cross-compilation environment in your POSIX shell (e.g `make env >> ~/.zshrc`) |
+| `make env` | Prints the environment variables inside the Makefile |
+| `make proenv` | Prints the `proenv` shell function to `stdout` to give a cross-compilation environment in your POSIX shell (e.g `make env >> ~/.zshrc`) |
 | `make everything` | Similar to `make` and `make all`, except that every supported host platform gets compiled and packed into Debian packages |
 | `make (tool)` | Compiles a specific tool, sending headers and libraries to `build_base` so that they can be accessed by other packages |
 | `make (tool)-package` | Similar to `make (tool)`. After compiling, the tool gets packed into a Debian package |
